@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jasonwebtoken');
-import User from '../models/users';
+import User from '../backend/models/users.js';
 
 const router = express.Router();
 
@@ -71,3 +71,7 @@ router.post('/login', async(req, res) => {
         console.error(error)
     }
 })
+
+
+
+export default router;
