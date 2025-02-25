@@ -1,4 +1,4 @@
-import Cookie from 'js-cookie';
+import Cookies from 'js-cookie';
 
 export const RegisterUser = async(user, pwd, setAccountCreated) => {
     try {
@@ -30,27 +30,39 @@ export const RegisterUser = async(user, pwd, setAccountCreated) => {
     }
 }
 
-export const LoginUser = async(user, pwd) => {
+export const LoginUser = async(user, pwd, setAuth) => {
     try {
         const res = await fetch('http://localhost:8000/api/login',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({user, pwd}),
+            body: JSON.stringify({username: user, password: pwd}),
         });
-
-        const data = await res.json();
 
         if(!res.ok) {
             throw new Error(`HTTP error! status: ${res.status}`);
         }
 
-        console.log(data);
-        return true
+        const data = await res.json();
+
+        if (!data){
+            console.log('No data from server');
+            return;
+        }
+        
+        const token = data.token;
+        setAuth(true);
+
+        //Store values in cookies
+        Cookies.set('token', token, { expires: 7 });
+        Cookies.set('username', user, { expires: 7 });
+        
+        return true;
+    
     }
-    catch{
-        console.error('Failed to fetch data from the API')
-        return false
+    catch(err){
+        console.error('Failed to fetch data from the API', err);
+        return false;
     }    
 }

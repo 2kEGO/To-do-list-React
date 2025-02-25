@@ -62,11 +62,17 @@ router.post('/login', async(req, res) => {
             return res.status(404).json({msg: 'Invalid Credentials'});
         }
 
-        res.json({msg: 'Login successful' });
+        // res.json({msg: 'Login successful' });
 
         //Generate Jwt token
-        
+        const secret = process.env.VITE_SECRET_KEY;
+        if (!secret){
+            throw new Error("SECRET_KEY is not defined in .env");
+        }
 
+        const token = jwt.sign({username: user.username}, secret, {expiresIn: '1h',});
+
+        res.json({msg: 'Login successful', token, username})
 
     } 
     catch(error) {

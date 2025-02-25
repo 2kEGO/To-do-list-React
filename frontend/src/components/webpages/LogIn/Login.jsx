@@ -1,25 +1,43 @@
 import './Login.css'
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import img from '../../../assets/loginimg.jpg'
 import { LoginUser } from '../../../Services/authServices'
+import { useNavigate } from 'react-router-dom'
+import AuthContext from '../../../context/authContext'
 
 
 const Login = () => {
 
     const [user, setUser] = useState("")
     const [pwd, setPwd] = useState("")
+    const navigate = useNavigate();
+
+    const {auth, setAuth} = useContext(AuthContext);
+
 
     const handleSubmit = async(e) => {
         e.preventDefault();
 
-        const login = LoginUser(user, pwd)
-        if(login){
-            console.log('Login successful')
-        }
-        else{
-            console.log('Login failed')
+        try {
+            const success = await LoginUser(user, pwd, setAuth);
+            if (success) {
+                navigate('/homepage');
+            } else {
+                console.log('Login failed');
+            }
+        } catch (error) {
+            console.error(error );
         }
     }
+
+    // useEffect(() => {
+    //     if(auth) {
+    //         navigate('/homepage')
+    //     }
+    //     else{
+    //         console.log("login failed")
+    //     }
+    // }, [auth, navigate])
 
   return (
     <>
