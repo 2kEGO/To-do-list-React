@@ -1,0 +1,155 @@
+.homepage-container {
+    
+    width: 100%;
+    height: 100vh;
+
+    background-color: var(--color-mainpage-background);
+}
+
+.homepage-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.homepage-banner-container {
+    display: flex;
+
+    width: 100%;
+    height: 7vh;
+    padding: .5em;
+
+    
+}
+
+.homepage-banner-wrapper {
+    display: flex;
+    width: 100%;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.homepage-banner-left, .homepage-banner-right {
+    flex: 1;
+}
+
+.homepage-body-container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.content-container {
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    justify-content: center;
+
+}
+
+.todolist-container {
+    width: 40%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--color-mylist-background);
+}
+
+.todolist-item {
+    display: flex;
+    flex-direction: row;
+    margin-top: .5em;
+}
+
+#todolist-title {
+    
+}
+
+#todolist-title p{
+    width: 90%;
+    margin: 0;
+    margin-left: 1em;
+    padding: .5em 0;
+
+    color: white;
+    font-family: var(--font-montserrat);
+    font-weight: 500;
+}
+
+#todolist-title button {
+    width: 10%;
+    background-color: transparent;
+    border: none;
+    color: white;
+
+    border-radius: 5%;
+}
+
+#todolist-title button:hover{
+    background-color: var(--color-mylist-hover);
+}
+
+#todolist-addtask{
+    padding: 0 1em;
+}
+
+#todolist-addtask button{
+    width: 100%;
+
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin: 0;
+    padding: .5em 1em;
+
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+#todolist-addtask button:hover { 
+    background-color: var(--color-mylist-hover);
+}
+
+#todolist-addtask button svg{
+    height: 15px;
+    width: 15px;
+    margin-right: .5em;
+}
+
+#todolist-addtask p {
+    margin: 0;
+    font-family: var(--font-montserrat);
+    font-size: 12pt;
+    font-weight: 500;
+}
+
+.empty-task-display {
+    display: none;
+
+    width: 100%;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-task-display p {
+    color: white;
+    font-family: var(--font-montserrat);
+    font-weight: 500;
+    font-size: 18pt;
+}
+
+.empty-task-display img {
+    height: 60%;
+    width: 30%;
+}

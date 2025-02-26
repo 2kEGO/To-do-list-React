@@ -46,7 +46,7 @@
     font-weight: 600;
 }
 
-#title p, #title a {
+.link-font{
     margin: 0;
     color: black;
     font-family: var(--font-montserrat);
@@ -74,7 +74,14 @@
     align-items: center;
 }
 
-#button-container button{
+#button-container p{
+    margin-top: 1em;
+    font-family: var(--font-montserrat);
+    font-weight: 500;
+    font-size: 12pt;
+}
+
+#register-button{
     width: 70%;
     padding: 1em;
 
@@ -86,5 +93,9 @@
     font-weight: 500;
     font-family: var(--font-montserrat);
     font-size: 12pt;
+}
+
+#register-button:hover {
+    background-color: var(--color-login-button);
 }
 

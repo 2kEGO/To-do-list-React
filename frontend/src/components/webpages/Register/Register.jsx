@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import './Register.css'
 import img from '../../../assets/registerImg.jpg'
 import { RegisterUser } from '../../../Services/authServices'
+import { Link } from 'react-router-dom'
 
 
 const Register = () => {
@@ -75,7 +76,7 @@ const Register = () => {
             
             <div className="register-item-container" id='title'>
                 <h1>Create an account</h1>
-                <p>Already have an account? <a href="#">Log in</a></p>
+                <p className='link-font'>Already have an account? <Link to="/login">Log in</Link></p>
             </div>
             
             <div className="register-item-container">
@@ -132,8 +133,8 @@ const Register = () => {
             </div> */}
 
             <div className="register-item-container" id='button-container'>
-                <button type='submit' >Create account</button>
-                <p>Already have an account? <a href="#">Log in</a></p>
+                <button type='submit' id='register-button'>Create account</button>
+                <p className='link-font'>Already have an account? <Link to="/login">Log in</Link></p>
             </div>
 
         </form>

@@ -2,7 +2,7 @@ import './Login.css'
 import React, {useState, useEffect, useContext} from 'react'
 import img from '../../../assets/loginimg.jpg'
 import { LoginUser } from '../../../Services/authServices'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import AuthContext from '../../../context/authContext'
 
 
@@ -74,8 +74,8 @@ const Login = () => {
                 </div>
 
                 <div className="login-item-container" id='login-button-container'>
-                    <button onClick={handleSubmit}>Sign in</button>
-                    <p>Don't have an account? <a href="#">Sign up</a></p>
+                    <button onClick={handleSubmit} id='login-button'>Sign in</button>
+                    <p>Don't have an account? <Link to="/Register">Sign Up</Link></p>
                 </div>
 
             </form>

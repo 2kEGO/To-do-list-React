@@ -8,6 +8,13 @@
     --font-montserrat: "Montserrat", sans-serif;
 
     --color-login-button: rgb(195, 195, 195);
+    --color-login-button-hover: rgb(248, 194, 93);
+
+    --color-mainpage-background: rgb(27, 27, 27);
+    --color-hamburger-hover: rgba(218, 218, 218, 0.767);
+
+    --color-mylist-background: rgb(19, 19, 20);
+    --color-mylist-hover: rgb(46, 46, 46);
 }
 
 body {
@@ -27,4 +34,8 @@ html {
 
 .hidden{
     display: none;
+}
+
+h1 {
+    margin: 0;
 }
