@@ -1,0 +1,170 @@
+/* TO DO LIST CONTAINER STARTED HERE */
+.todolist-container {
+    width: 40%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--color-mylist-background);
+}
+
+.todolist-item {
+    display: flex;
+    flex-direction: row;
+    margin-top: .5em;
+}
+
+
+#todolist-title p{
+    width: 90%;
+    margin: 0;
+    margin-left: 1em;
+    padding: .5em 0;
+
+    color: white;
+    font-family: var(--font-montserrat);
+    font-weight: 500;
+}
+
+#todolist-title button {
+    width: 10%;
+    background-color: transparent;
+    border: none;
+    color: white;
+
+    border-radius: 5%;
+}
+
+#todolist-title button:hover{
+    background-color: var(--color-mylist-hover);
+}
+
+#todolist-addtask{
+    padding: 0 1em;
+}
+
+#todolist-addtask button{
+    width: 100%;
+
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin: 0;
+    padding: .5em 1em;
+
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+#todolist-addtask button:hover { 
+    background-color: var(--color-mylist-hover);
+}
+
+#todolist-addtask button svg{
+    height: 15px;
+    width: 15px;
+    margin-right: .5em;
+}
+
+#todolist-addtask p {
+    margin: 0;
+    font-family: var(--font-montserrat);
+    font-size: 12pt;
+    font-weight: 500;
+}
+
+.empty-task-display {
+    display: none;
+
+    width: 100%;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-task-display p {
+    color: white;
+    font-family: var(--font-montserrat);
+    font-weight: 500;
+    font-size: 18pt;
+}
+
+.empty-task-display img {
+    height: 60%;
+    width: 30%;
+}
+
+
+.addtask-section {
+    display: flex;
+    width: 100%;
+    padding: 0 1em;
+}
+
+.addtask-input-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.addtask-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: .2em;
+}
+
+.addtask-input input {
+    border: 0;
+    
+    background-color: transparent;
+
+    height: 3vh;
+
+    padding: 0 1em;
+
+    color: white;
+}
+
+.addtask-input input:focus {
+    border: 0;
+    border-color: none;
+    outline: none;
+    border-bottom: 1px solid white;
+}
+
+.button-selection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin-top: .2em;
+}
+
+.tempdate-section {
+    display: flex;
+    flex-direction: row;
+}
+
+.button-selection button {
+    border: 1px solid;
+    border-radius: 20px;
+    padding: .3em .8em;
+    margin: 0 .2em;
+
+    background-color: transparent;
+    color: white;
+    font-family: var(--font-montserrat);
+    font-weight: 500;
+    font-size: 10pt;
+}
+
+.button-selection button:hover {
+    background-color: var(--color-mylist-hover);
+}
