@@ -41,7 +41,7 @@
 }
 
 .logo-container h1 {
-    font-family: var(--font-montserrat);
+    font-family: var(--font-inter);
     font-size: 20pt;
     font-weight: 500;
     color: white;
