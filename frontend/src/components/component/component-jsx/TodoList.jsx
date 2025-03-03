@@ -9,13 +9,14 @@ import emptyTask from '../../../assets/taskimg.png'
 const TodoList = () => {
     
     const [task, setTask] = useState('')
-    const [newTask, setNewTask] = useState('')
-
     const [note, setNote] = useState('')
-    const [newNote, setNewNote] = useState('')
+
+    const [displayTask, setDisplayTask] = useState([])
 
     const addTask = () => {
-    
+        const newTask = {task: task,
+                        note: note};
+        setDisplayTask([...displayTask, newTask]);
     }
 
     const deleteTask = () => {
@@ -40,7 +41,7 @@ const TodoList = () => {
             </div>
 
             <div className="todolist-item" id='todolist-addtask'>
-                <button>
+                <button onClick={addTask}>
                     <FontAwesomeIcon icon={faCircleCheck} />
                     <p>Add a task</p>
                 </button>
@@ -65,15 +66,15 @@ const TodoList = () => {
                 <div className="addtask-input">
                     <input type="text" 
                             placeholder='Title'
-                            value={newTask}
-                            onChange={(e) => setNewTask(e.target.value)}
+                            value={task}
+                            onChange={(e) => setTask(e.target.value)}
                             
                             />
 
                     <input type="text" 
                             placeholder='Details'
-                            value={newNote}
-                            onChange={(e) => setNewNote(e.target.value)}
+                            value={note}
+                            onChange={(e) => setNote(e.target.value)}
 
                             />
                 </div>
@@ -93,11 +94,19 @@ const TodoList = () => {
                 
                 </div>
 
-                <div className="display-task-section">
-                    {}
-                </div>
+                
             
             </div>
+
+            <div className="display-task-section">
+                    <ul>
+                        {displayTask.map((tasks, index) => 
+                        <li key={index}>
+                            {tasks.task} {tasks.note}
+                        </li>
+                        )}
+                    </ul>
+                </div>
 
             </div>
 
