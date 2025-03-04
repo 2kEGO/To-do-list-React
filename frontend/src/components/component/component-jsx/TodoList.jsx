@@ -20,7 +20,7 @@ const TodoList = () => {
     }
 
     const deleteTask = () => {
-    
+        setDisplayTask(displayTask.filter(task => task.task!== task.task)); 
     }
 
     const handleBlur = () => {
