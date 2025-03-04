@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faEllipsisVertical, faCalendarDays, faRepeat} from '@fortawesome/free-solid-svg-icons'
 import {faCircleCheck} from "@fortawesome/free-regular-svg-icons"
 import emptyTask from '../../../assets/taskimg.png'
+import Checkbox from './Checkbox'
 
 const TodoList = () => {
     
@@ -13,19 +14,35 @@ const TodoList = () => {
 
     const [displayTask, setDisplayTask] = useState([])
 
+    useEffect(() => {
+        const data = localStorage.getItem("myTask");
+        if (data) {
+          setDisplayTask(JSON.parse(data));
+        }
+      }, []);
+
     const addTask = () => {
-        const newTask = {task: task,
-                        note: note};
-        setDisplayTask([...displayTask, newTask]);
-    }
+        if (task.trim() !== "" || note.trim() !== "") {
+          const newTask = { task, note };
+          
+          setDisplayTask(prevTasks => {
+            const updatedTasks = [...prevTasks, newTask];
+            localStorage.setItem("myTask", JSON.stringify(updatedTasks)); // ✅ Save immediately
+            return updatedTasks;
+          });
+    
+          setTask("");
+          setNote("");
+        }
+    };
 
-    const deleteTask = () => {
-        setDisplayTask(displayTask.filter(task => task.task!== task.task)); 
-    }
-
-    const handleBlur = () => {
-
-    }
+    const deleteTask = (index) => {
+        setDisplayTask(prevTasks => {
+          const updatedTasks = prevTasks.filter((_, i) => i !== index);
+          localStorage.setItem("myTask", JSON.stringify(updatedTasks)); // ✅ Save immediately
+          return updatedTasks;
+        });
+      };
 
 
 
@@ -47,74 +64,61 @@ const TodoList = () => {
                 </button>
             </div>
 
-            <div className="todolist-item">
-            
-            {/* DISPLAY IF NO TASK */}
-            <div className="empty-task-display">
-                <img src={emptyTask} alt="" />
-                <p>No tasks yet</p>                   
-            </div>
-
-            <div className="addtask-section">
-
-                <div className="addtask-checkbox">
-                    <input type="checkbox" id='checkbox' />
-                </div>
+            <div className="todolist-item" id='newtask-section'>
                 
-                <div className="addtask-input-section">
+                <div className="addtask-section">
+                    
+                    <div className="addtask-input-section">
 
-                <div className="addtask-input">
-                    <input type="text" 
-                            placeholder='Title'
-                            value={task}
-                            onChange={(e) => setTask(e.target.value)}
+                        <div className="addtask-input">
+                            <input type="text" 
+                                    placeholder='Title'
+                                    value={task}
+                                    onChange={(e) => setTask(e.target.value)}
+                                    />
+
+                            <input type="text" 
+                                    placeholder='Details'
+                                    value={note}
+                                    onChange={(e) => setNote(e.target.value)}
+                                    />
+                        </div>
+
+                        {/* <div className="button-selection">
+                            <div className="tempdate-section">
+                                <button>Today</button>
+                                <button>Tomorrow</button>
+                                <button><FontAwesomeIcon icon={faCalendarDays} /></button>
+                            </div>
+
+                            <div className="repeat-section">
+                                <button>Add Task</button>
+                            </div>
                             
-                            />
-
-                    <input type="text" 
-                            placeholder='Details'
-                            value={note}
-                            onChange={(e) => setNote(e.target.value)}
-
-                            />
-                </div>
-
-                <div className="button-selection">
-                    <div className="tempdate-section">
-                        <button>Today</button>
-                        <button>Tomorrow</button>
-                        <button><FontAwesomeIcon icon={faCalendarDays} /></button>
+                        </div> */}
+                    
                     </div>
-
-                    {/* <div className="repeat-section">
-                        <button>Add Task</button>
-                    </div> */}
                     
                 </div>
-                
+
+                {displayTask.map((task, index) =>
+                <div className="displaytask-section" key={index}>
+                    
+                    <div className="addtask-checkbox">
+                        <Checkbox onClick={() => deleteTask(index)}/>
+                    </div>
+
+                    <div className="tasknote-display">
+                        <p>{task.task}</p>
+                        <p>{task.note}</p>
+                        
+                    </div>
                 </div>
-
-                
-            
-            </div>
-
-            <div className="display-task-section">
-                    <ul>
-                        {displayTask.map((tasks, index) => 
-                        <li key={index}>
-                            {tasks.task} {tasks.note}
-                        </li>
-                        )}
-                    </ul>
-                </div>
+                )}
 
             </div>
 
-            <div className="todolist-item">
-
-            </div>
-
-            </div>
+        </div>
     </>
   )
 }

@@ -6,6 +6,9 @@
     display: flex;
     flex-direction: column;
 
+    border-radius: 25px;
+    padding: 1em;
+
     background-color: var(--color-mylist-background);
 }
 
@@ -28,7 +31,7 @@
 }
 
 #todolist-title button {
-    width: 10%;
+    width: 5%;
     background-color: transparent;
     border: none;
     color: white;
@@ -104,20 +107,20 @@
 .addtask-section {
     display: flex;
     width: 100%;
-    padding: 0 1em;
 }
 
 .addtask-input-section {
     width: 100%;
     display: flex;
     flex-direction: column;
-
+    margin-left: 1.5em;
 }
 
 .addtask-input {
     display: flex;
     flex-direction: column;
     margin-bottom: .2em;
+    
 }
 
 .addtask-input input {
@@ -130,6 +133,7 @@
     padding: 0 1em;
 
     color: white;
+    
 }
 
 .addtask-input input:focus {
@@ -137,6 +141,7 @@
     border-color: none;
     outline: none;
     border-bottom: 1px solid white;
+    color: white;
 }
 
 .button-selection {
@@ -145,6 +150,8 @@
     /* justify-content: space-between; */
 
     margin-top: .2em;
+    padding-bottom: .5em;
+
 }
 
 .tempdate-section {
@@ -167,4 +174,45 @@
 
 .button-selection button:hover {
     background-color: var(--color-mylist-hover);
+}
+
+
+#newtask-section {
+    flex-direction: column;
+}
+
+.displaytask-section {
+    display: flex;
+    flex-direction: row;
+
+    margin: .5em 0;
+
+    border-radius: 5px;
+}
+
+.addtask-checkbox {
+    margin: 0;
+    width: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tasknote-display {
+    display: flex;
+    flex-direction: column;
+    margin-left: .5em;
+    width: 95%;
+}
+
+.displaytask-section:hover{
+    background-color: var(--color-mylist-hover);
+}
+
+.tasknote-display p {
+    margin: 0;
+    font-family: var(--font-inter);
+    font-size: 12pt;
+    font-weight: 300;
+    color: white;
 }
