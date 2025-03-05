@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
 
@@ -6,6 +5,7 @@ import Login from './components/webpages/LogIn/Login'
 import Register from './components/webpages/Register/Register'
 import Homepage from './components/webpages/Homepage/Homepage'
 import ProtectedRoutes from './utils/protectedRoutes'
+import Profile from './components/webpages/Profile/Profile'
 
 function App() {
   
@@ -19,6 +19,7 @@ function App() {
 
         <Route element={<ProtectedRoutes/>}>
           <Route path='/homepage' element={<Homepage/>}></Route>
+          <Route path='/profile' element={<Profile/>}></Route>
         </Route>
         
       </Routes>

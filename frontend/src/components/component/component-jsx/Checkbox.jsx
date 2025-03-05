@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Checkbox = ({onClick}) => {
   return (
     <StyledWrapper>
-      <div className="container">
+      <div className="checkbox-container">
         <input type="checkbox" id="cbx2" style={{display: 'none'}} onClick={onClick} />
         <label htmlFor="cbx2" className="check">
           <svg width="18px" height="18px" viewBox="0 0 18 18">
@@ -21,6 +21,10 @@ const Checkbox = ({onClick}) => {
 const StyledWrapper = styled.div`
   /* Variation of work by @mrhyddenn for Radios */
 
+  .checkbox-container {
+    display: flex;
+
+  }
 
   .check {
     cursor: pointer;

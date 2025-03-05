@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import "../component-css/TodoList.css"
+import "../../webpages/Homepage/Homepage.css"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faEllipsisVertical, faCalendarDays, faRepeat} from '@fortawesome/free-solid-svg-icons'
@@ -27,7 +28,7 @@ const TodoList = () => {
           
           setDisplayTask(prevTasks => {
             const updatedTasks = [...prevTasks, newTask];
-            localStorage.setItem("myTask", JSON.stringify(updatedTasks)); // ✅ Save immediately
+            localStorage.setItem("myTask", JSON.stringify(updatedTasks));
             return updatedTasks;
           });
     
@@ -39,7 +40,7 @@ const TodoList = () => {
     const deleteTask = (index) => {
         setDisplayTask(prevTasks => {
           const updatedTasks = prevTasks.filter((_, i) => i !== index);
-          localStorage.setItem("myTask", JSON.stringify(updatedTasks)); // ✅ Save immediately
+          localStorage.setItem("myTask", JSON.stringify(updatedTasks)); 
           return updatedTasks;
         });
       };
@@ -101,6 +102,7 @@ const TodoList = () => {
                     
                 </div>
 
+                {/* DISPLAY TASK STARTS HERE */}
                 {displayTask.map((task, index) =>
                 <div className="displaytask-section" key={index}>
                     

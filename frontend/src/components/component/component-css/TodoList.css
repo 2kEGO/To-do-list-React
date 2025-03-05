@@ -186,6 +186,7 @@
     flex-direction: row;
 
     margin: .5em 0;
+    padding: .2em;
 
     border-radius: 5px;
 }
@@ -216,3 +217,4 @@
     font-weight: 300;
     color: white;
 }
+

@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Homepage.css"
+import "./HomepageMedia.css"
 import HomepageLeft from '../../component/component-jsx/HomepageLeft'
 import HomepageRight from '../../component/component-jsx/HomepageRight'
 import TodoList from '../../component/component-jsx/TodoList'
@@ -11,9 +12,9 @@ const Homepage = () => {
         <div className="homepage-wrapper">
 
           {/* THIS IS THE HEADER */}
-          <div className="homepage-banner-container">
+          <nav className="homepage-banner-container">
             {banner()}
-          </div>
+          </nav>
 
           {/* THIS IS THE BODY */}
           <div className="homepage-body-container">

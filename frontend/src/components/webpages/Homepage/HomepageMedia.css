@@ -1,0 +1,44 @@
+@media (max-width: 480px) {
+
+    .hamburger-container {
+        padding: 0;
+    }
+
+    .logo-container h1{
+        font-size: 10px;
+    }
+    
+    .switch-calendar-button-container {
+        display: none;
+    }
+
+    .content-container {
+        margin-top: 1em;
+    }
+
+    .todolist-container {
+        padding: 0;
+    }
+
+    #todolist-addtask button{
+        padding: 0;
+    }
+
+    #todolist-addtask button p {
+        font-size: 1em;
+    }
+
+    .addtask-section{
+        margin: 0;
+    }
+
+    .addtask-input-section{
+        margin: 0 0 0 0;
+    }
+
+    .addtask-input input{
+        padding: 0;
+    }
+
+    
+}

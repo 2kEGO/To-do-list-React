@@ -3,7 +3,16 @@ import "../component-css/homepageRight.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCalendarCheck, faCircleCheck, faUser} from "@fortawesome/free-regular-svg-icons"
 import {faCalendarDays} from '@fortawesome/free-solid-svg-icons'
+
+import { useNavigate } from 'react-router-dom'
 const HomepageRight = () => {
+
+    const navigate = useNavigate();
+
+    const getProfile = () => {
+        navigate("/profile")
+    }
+
   return (
     <>
         <div className="homepage-banner-right">           
@@ -19,7 +28,7 @@ const HomepageRight = () => {
             </div>
 
             <div className="profile-button-container">
-                <button>
+                <button onClick={getProfile}>
                     <FontAwesomeIcon icon={faUser} />
                 </button>
             </div>
