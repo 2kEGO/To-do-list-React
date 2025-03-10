@@ -83,6 +83,7 @@ const TodoList = () => {
                                     value={note}
                                     onChange={(e) => setNote(e.target.value)}
                                     />
+
                         </div>
 
                         {/* <div className="button-selection">
@@ -99,8 +100,23 @@ const TodoList = () => {
                         </div> */}
                     
                     </div>
+
                     
                 </div>
+
+                {/* <div className="addtask-section">
+                    <div className="add-date-section">
+                        <button>Today</button>
+                        <button>Tomorrow</button>
+
+                        <span className="datepicker-toggle">
+                            <span className="datepicker-toggle-button">
+                                <FontAwesomeIcon icon={faCalendarDays}/>
+                            </span>
+                            <input type="date" className="datepicker-input"/>
+                        </span>
+                    </div>
+                </div> */}
 
                 {/* DISPLAY TASK STARTS HERE */}
                 {displayTask.map((task, index) =>

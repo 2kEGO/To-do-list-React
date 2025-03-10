@@ -27,10 +27,13 @@
 
     justify-content: space-between;
     align-items: center;
+    /* flex-wrap: wrap; */
 }
 
 .homepage-banner-left, .homepage-banner-right {
-    flex: 1;
+    /* flex: 1; */
+    flex-shrink: 1;
+    flex-wrap: wrap;
 }
 
 .homepage-body-container {

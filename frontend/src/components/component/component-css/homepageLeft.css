@@ -35,14 +35,15 @@
 }
 
 .logo-container svg {
-    height: 30px;
-    width: 30px;
+    height: auto;
+    width: 1.7vw;
+    min-width: 1vw;
     color: white;
 }
 
 .logo-container h1 {
     font-family: var(--font-inter);
-    font-size: 20pt;
+    font-size: 2vw;
     font-weight: 500;
     color: white;
     margin-left:.5em;
