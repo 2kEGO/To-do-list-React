@@ -12,8 +12,9 @@ const TodoList = () => {
     
     const [task, setTask] = useState('')
     const [note, setNote] = useState('')
-
+    const [date, setDate] = useState('')
     const [displayTask, setDisplayTask] = useState([])
+
 
     useEffect(() => {
         const data = localStorage.getItem("myTask");
@@ -24,7 +25,7 @@ const TodoList = () => {
 
     const addTask = () => {
         if (task.trim() !== "" || note.trim() !== "") {
-          const newTask = { task, note };
+          const newTask = { task, note, date };
           
           setDisplayTask(prevTasks => {
             const updatedTasks = [...prevTasks, newTask];
@@ -44,6 +45,7 @@ const TodoList = () => {
           return updatedTasks;
         });
       };
+
 
 
 
@@ -104,19 +106,13 @@ const TodoList = () => {
                     
                 </div>
 
-                {/* <div className="addtask-section">
-                    <div className="add-date-section">
-                        <button>Today</button>
-                        <button>Tomorrow</button>
-
-                        <span className="datepicker-toggle">
-                            <span className="datepicker-toggle-button">
-                                <FontAwesomeIcon icon={faCalendarDays}/>
-                            </span>
-                            <input type="date" className="datepicker-input"/>
-                        </span>
+                <div className="addtask-section">
+                    <div className="adddate-section">
+                        
+                        <input type="date" onChange={(e) => setDate(e.target.value)}/>
+                        
                     </div>
-                </div> */}
+                </div>
 
                 {/* DISPLAY TASK STARTS HERE */}
                 {displayTask.map((task, index) =>
@@ -129,8 +125,10 @@ const TodoList = () => {
                     <div className="tasknote-display">
                         <p>{task.task}</p>
                         <p>{task.note}</p>
-                        
+                        <p>{task.date}</p>
                     </div>
+
+                    
                 </div>
                 )}
 

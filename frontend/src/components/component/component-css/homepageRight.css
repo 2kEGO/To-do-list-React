@@ -16,8 +16,7 @@
 
     margin-right: 1em;
 
-    border: 1px solid white;
-    border-radius: 10%;
+    
 }
 
 .switch-calendar-button-container button, .profile-button-container button {
@@ -31,6 +30,9 @@
     background-color: transparent;
 
     border: 0px solid white;
+
+    border: 1px solid white;
+    border-radius: 10%;
 }
 
 .switch-calendar-button-container button:hover {
@@ -42,5 +44,50 @@
     width: 15px;
     
     
+    color: white;
+}
+
+
+.profile-button-container{
+    position: relative;
+}
+
+#profile-button:hover {
+    background-color: var(--color-mylist-hover);
+}
+
+#profile-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+
+    border: 1px solid ;
+    border-radius: 5%;
+}
+
+#profile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#profile-menu ul li {
+    border-bottom: 1px solid black;
+    padding: 1em 2em;
+    cursor: pointer;
+    background-color: var(--color-mylist-background);
+}
+
+#profile-menu ul li:hover {
+    background-color: var(--color-mylist-hover);
+}
+
+#profile-menu ul li button {
+    padding: 0;
+    border: 0;
+
     color: white;
 }
