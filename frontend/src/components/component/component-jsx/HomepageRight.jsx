@@ -18,6 +18,10 @@ const HomepageRight = () => {
         navigate("/login");
     }
 
+    const Profile = () => {
+        navigate("/profile");
+    }
+
     const ToggleDropDown = () => {
         setToggle(!toggle)
     }
@@ -43,8 +47,8 @@ const HomepageRight = () => {
 
                 <div className={toggle? 'show': 'hidden'} id='profile-menu'>
                     <ul>
-                        <li><button onClick={Logout}>Profile</button></li>
-                        <li><button>Logout</button></li>
+                        <li><button onClick={Profile}>Profile</button></li>
+                        <li><button onClick={Logout}>Logout</button></li>
                     </ul>
                 </div>
             </div>

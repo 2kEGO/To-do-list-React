@@ -66,3 +66,32 @@ export const LoginUser = async(user, pwd, setAuth) => {
         return false;
     }    
 }
+
+export const getUserInfo = async(token) => {
+    try {
+        
+        const res = await fetch('http://localhost:8000/api/user-info', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        });
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
+        const data = await res.json();
+
+        if (!data){
+            console.log('No data from server');
+            return null;
+        }
+
+        console.log(data)
+
+
+    } catch (error) {
+        console.error('Failed to fetch data from the API', error)
+    }
+}

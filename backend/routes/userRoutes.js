@@ -3,6 +3,9 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../models/users.js';
 
+import verifyToken from '../middleware/authMiddleware.js';
+
+
 const router = express.Router();
 
 
@@ -72,7 +75,7 @@ router.post('/login', async(req, res) => {
 
         const token = jwt.sign({username: user.username}, secret, {expiresIn: '1h',});
 
-        res.json({msg: 'Login successful', token, username})
+        res.json({msg: 'Login successful', token})
 
     } 
     catch(error) {
@@ -82,5 +85,46 @@ router.post('/login', async(req, res) => {
 })
 
 
+router.get('/user-info', verifyToken, async (req, res) => {
+    try {
+        // Use the userId from the decoded token to fetch user details from the database
+        const user = await User.findOne({ username: req.user.username }).select('username password');
+        
+        if (!user) {
+            return res.status(404).json({msg: 'User not found'});
+        }
+
+        // Return user details (excluding password in a real scenario)
+        res.json({
+            username: user.username,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({msg: 'Server error'});
+    }
+});
+
+router.put('/update-user', verifyToken, async(req,res) => {
+    const {username, password, email} = req.body;
+
+    try {
+        const user = await User.findOne({username: req.user.username})
+
+        if(!user){
+            return res.status(404).json({msg: 'User not found duma'})
+        }
+
+        if(username) user.username = username;
+        if(email) user.email = username;
+        if(password) user.password = password;
+
+        await user.save();
+        res.status(200).json({msg: 'User data updated'})
+
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({msg: 'server error'})
+    }
+})
 
 export default router;
