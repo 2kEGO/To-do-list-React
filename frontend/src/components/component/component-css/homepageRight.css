@@ -76,7 +76,7 @@
 
 #profile-menu ul li {
     border-bottom: 1px solid black;
-    padding: 1em 2em;
+    
     cursor: pointer;
     background-color: var(--color-mylist-background);
 }
@@ -86,8 +86,8 @@
 }
 
 #profile-menu ul li button {
-    padding: 0;
     border: 0;
+    padding: 1em 2em;
 
     color: white;
 }

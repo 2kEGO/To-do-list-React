@@ -53,4 +53,14 @@
 
 }
 
+.content-wrapper {
+    min-width: 40%;
+    height: 100%;
+
+    border-radius: 25px;
+    padding: 1em;
+
+    background-color: var(--color-mylist-background);
+}
+
 

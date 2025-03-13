@@ -12,14 +12,14 @@ const router = express.Router();
 // Register new user
 router.post('/register', async(req, res) => {
   try {
-    const {username, password} = req.body;
+    const {username, password, email} = req.body;
 
     // Check if username exists
     const existingUser = await User.findOne({username})
 
     if (existingUser){
         //check username
-        if(existingUser.username === username){
+        if(existingUser.username === username || existingUser.email === email){
             return res.status(400).json({msg: 'Username already exists'});
         }
 
@@ -32,7 +32,7 @@ router.post('/register', async(req, res) => {
     const hashpassword = await bcrypt.hash(password, 10);
 
     //Create new user
-    const newUser = new User({username, password: hashpassword})
+    const newUser = new User({username, password: hashpassword, email})
     
     //Save new user
     await newUser.save();
@@ -114,9 +114,23 @@ router.put('/update-user', verifyToken, async(req,res) => {
             return res.status(404).json({msg: 'User not found duma'})
         }
 
-        if(username) user.username = username;
-        if(email) user.email = username;
-        if(password) user.password = password;
+        if(email) {
+            if(email === user.email){
+                return res.status(400).json({msg: 'Email cannot be the same'});
+            }
+            
+            user.email = email;
+        };
+
+        if (password) {
+
+            const isMatch = await bcrypt.compare(password, user.password);
+            if (isMatch) {
+                return res.status(400).json({ msg: 'Passwords cannot be the same' });
+            }
+
+            user.password = await bcrypt.hash(password, 10);
+        }
 
         await user.save();
         res.status(200).json({msg: 'User data updated'})

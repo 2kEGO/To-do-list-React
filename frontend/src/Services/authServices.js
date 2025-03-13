@@ -67,15 +67,16 @@ export const LoginUser = async(user, pwd, setAuth) => {
     }    
 }
 
-export const getUserInfo = async(token) => {
+export const UpdateUserInfo = async(token, username, password, email) => {
+
     try {
-        
-        const res = await fetch('http://localhost:8000/api/user-info', {
-            method: 'GET',
+        const res = await fetch('http://localhost:8000/api/update-user', {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
+            body: JSON.stringify({username: username, password: password, email: email}),
         });
         if (!res.ok) {
             throw new Error(`HTTP error! status: ${res.status}`);
@@ -89,6 +90,7 @@ export const getUserInfo = async(token) => {
         }
 
         console.log(data)
+        return true;
 
 
     } catch (error) {

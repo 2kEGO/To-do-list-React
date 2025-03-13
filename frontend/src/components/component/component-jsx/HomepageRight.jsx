@@ -8,7 +8,7 @@ import Cookies from 'js-cookie'
 
 
 import { useNavigate } from 'react-router-dom'
-const HomepageRight = () => {
+const HomepageRight = ({profile, setProfile}) => {
 
     const [toggle, setToggle] = useState(false)
     const navigate = useNavigate();
@@ -16,10 +16,6 @@ const HomepageRight = () => {
     const Logout = () => {
         Cookies.remove("token");
         navigate("/login");
-    }
-
-    const Profile = () => {
-        navigate("/profile");
     }
 
     const ToggleDropDown = () => {
@@ -47,7 +43,7 @@ const HomepageRight = () => {
 
                 <div className={toggle? 'show': 'hidden'} id='profile-menu'>
                     <ul>
-                        <li><button onClick={Profile}>Profile</button></li>
+                        <li><button onClick={setProfile}>Profile</button></li>
                         <li><button onClick={Logout}>Logout</button></li>
                     </ul>
                 </div>

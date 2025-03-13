@@ -1,12 +1,15 @@
-import React from 'react'
+import React, {use, useState} from 'react'
 import "./Homepage.css"
 import "./HomepageMedia.css"
 import HomepageLeft from '../../component/component-jsx/HomepageLeft'
 import HomepageRight from '../../component/component-jsx/HomepageRight'
 import TodoList from '../../component/component-jsx/TodoList'
+import Profile from '../Profile/Profile'
 
 const Homepage = () => {
   
+  const [profile, setProfile] = useState(false)
+
   return (
     <>
       <div className="homepage-container">
@@ -22,7 +25,10 @@ const Homepage = () => {
             <div className="sidebar-container"></div>
 
             <div className="content-container">
-              <TodoList/>
+              <div className="content-wrapper">
+                {profile ? <Profile /> : <TodoList />}
+              </div>
+              
             </div>
           </div>
 
@@ -35,7 +41,7 @@ const Homepage = () => {
     return <div className="homepage-banner-wrapper">
       <HomepageLeft />
 
-      <HomepageRight />
+      <HomepageRight setProfile={() => setProfile(!profile)}/>
 
     </div>
   }
