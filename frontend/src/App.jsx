@@ -6,22 +6,31 @@ import Register from './components/webpages/Register/Register'
 import Homepage from './components/webpages/Homepage/Homepage'
 import ProtectedRoutes from './utils/protectedRoutes'
 
+import AuthContext from './context/authContext'
+import { useState } from 'react'
+
+
 function App() {
-  
+
+  const [profile, setProfile] = useState(false)
 
   return (
     <>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/register' element={<Register/>}></Route>
-        <Route path='/login' element={<Login/>}></Route>
+    <AuthContext.Provider value={{profile, setProfile}}>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/register' element={<Register/>}></Route>
+          <Route path='/login' element={<Login/>}></Route>
 
-        <Route element={<ProtectedRoutes/>}>
-          <Route path='/homepage' element={<Homepage/>}></Route>
-        </Route>
-        
-      </Routes>
-    </BrowserRouter>
+          <Route element={<ProtectedRoutes/>}>
+            
+              <Route path='/homepage' element={<Homepage/>}></Route>
+            
+          </Route>
+          
+        </Routes>
+      </BrowserRouter>
+    </AuthContext.Provider>
     </>
   )
 }

@@ -10,9 +10,9 @@ const HomepageLeft = () => {
     <>
     <div className="homepage-banner-left">
 
-        <button className="hamburger-container">
+        {/* <button className="hamburger-container">
             <FontAwesomeIcon icon={faBars} />
-        </button>
+        </button> */}
 
         <div className="logo-container">
             <FontAwesomeIcon icon={faCalendarCheck} />

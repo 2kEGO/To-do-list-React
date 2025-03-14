@@ -1,6 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import Cookies from 'js-cookie'
 import { UpdateUserInfo } from '../../../Services/authServices'
+import AuthContext from '../../../context/authContext.js'
+
+import "./Profile.css"
 
 const Profile = () => {
 
@@ -8,6 +11,8 @@ const Profile = () => {
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [email, setEmail] = useState("")
+
+  const {profile, setProfile} = useContext(AuthContext)
 
   const updateUser = async () => {
 
@@ -24,6 +29,7 @@ const Profile = () => {
 
       if (data) {
         console.log("User info updated successfully");
+        
         // Optionally, you could set this data into state and display it
       } else {
         console.error("No data received");
@@ -33,6 +39,10 @@ const Profile = () => {
     }
   }
 
+
+  const changeProfile = () => {
+    setProfile(!profile)
+  }
 
   return (
     <>
@@ -44,15 +54,25 @@ const Profile = () => {
           </div>
 
           <div className="profile-item-container">
-            <label htmlFor="">Username:</label>
-            <p>{username}</p>
+            <button onClick={changeProfile}>Back</button>
+          </div>
 
+          <div className="profile-item-container" id='username'>
+            <p>Username:</p>
+            <p>{username}</p>
+          </div>
+
+          <div className="profile-item-container">
             <label htmlFor="">Email:</label>
             <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+          </div>
 
+          <div className="profile-item-container">
             <label htmlFor="">Password:</label>
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          </div>
 
+          <div className="profile-item-container">
             <label htmlFor="">Confirm Password:</label>
             <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
           </div>
@@ -63,6 +83,7 @@ const Profile = () => {
 
         </div>
       </div>
+      
     </>
   )
 }

@@ -1,4 +1,4 @@
-import React, {use, useState} from 'react'
+import React, {use, useState, useContext} from 'react'
 import "./Homepage.css"
 import "./HomepageMedia.css"
 import HomepageLeft from '../../component/component-jsx/HomepageLeft'
@@ -6,9 +6,11 @@ import HomepageRight from '../../component/component-jsx/HomepageRight'
 import TodoList from '../../component/component-jsx/TodoList'
 import Profile from '../Profile/Profile'
 
+import AuthContext from '../../../context/authContext.js'
+
 const Homepage = () => {
   
-  const [profile, setProfile] = useState(false)
+  const {profile, setProfile} = useContext(AuthContext)
 
   return (
     <>
@@ -28,8 +30,8 @@ const Homepage = () => {
               <div className="content-wrapper">
                 {profile ? <Profile /> : <TodoList />}
               </div>
-              
             </div>
+
           </div>
 
         </div>

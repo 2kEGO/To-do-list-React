@@ -1,8 +1,9 @@
 import { createContext } from "react";
 
+
 const AuthContext = createContext({
-    auth: false,
-    setAuth: () => {},
+  profile: false,
+  setProfile: () => {},
 });
 
 export default AuthContext;
